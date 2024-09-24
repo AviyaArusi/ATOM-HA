@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Video</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-image: url("https://scontent.ftlv20-2.fna.fbcdn.net/v/t39.30808-6/461189986_27195832010015310_5019074614589906906_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=127cfc&_nc_ohc=qoPzPwV98CYQ7kNvgGmLsdR&_nc_ht=scontent.ftlv20-2.fna&_nc_gid=APBgv-fjQcMKVhuaR65p40-&oh=00_AYBiHeU6lfB8CfJoqaTLUVQWLogvSe8SKFVAoABvdTarjg&oe=66F72BAA");
+            background-size: cover;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            max-width: 400px;
+            width: 100%;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        .upload-area {
+            border: 2px dashed #ccc;
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .upload-area:hover {
+            background-color: #f8f8f8;
+        }
+        .upload-icon {
+            font-size: 3rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        .file-input {
+            display: none;
+        }
+        .file-label {
+            font-size: 1rem;
+            color: #666;
+        }
+        .selected-file {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        .upload-btn {
+            display: block;
+            width: 100%;
+            padding: 0.75rem;
+            margin-top: 1rem;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .upload-btn:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Upload a Video File</h1>
+        <form method="post" enctype="multipart/form-data">
+            <div class="upload-area" onclick="document.getElementById('fileInput').click()">
+                <div class="upload-icon">📁</div>
+                <label for="fileInput" class="file-label">
+                    Click to upload<br>
+                    <span style="font-size: 0.8rem;">MP4</span>
+                </label>
+                <input type="file" id="fileInput" class="file-input" name="file" onchange="updateFileName(this)">
+            </div>
+            <div id="selectedFile" class="selected-file"></div>
+            <button type="submit" class="upload-btn">Upload Video</button>
+        </form>
+    </div>
+
+    <script>
+        function updateFileName(input) {
+            const fileName = input.files[0]?.name;
+            document.getElementById('selectedFile').textContent = fileName ? `Selected file: ${fileName}` : '';
+        }
+    </script>
+</body>
+</html>
+
